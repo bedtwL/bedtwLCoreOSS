@@ -1,5 +1,7 @@
 package me.bedtwL.oss;
 
+import lombok.Getter;
+import me.bedtwL.oss.listeners.commands.WorldCommand;
 import me.bedtwL.oss.listeners.player.ChatFormatter;
 import me.bedtwL.oss.utils.LuckpermsUtils;
 import org.bukkit.Bukkit;
@@ -7,13 +9,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CoreOSS extends JavaPlugin {
-
+    @Getter
+    private static CoreOSS instance;
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        instance=this;
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdir();
+        }
+        getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
         if (Bukkit.getPluginManager().getPlugin("LuckPerms")!=null)
             LuckpermsUtils.init();
         regListener(new ChatFormatter());
+        new WorldCommand().register(Bukkit.getPluginCommand("world"));
     }
     public void regListener(Listener... listener)
     {
