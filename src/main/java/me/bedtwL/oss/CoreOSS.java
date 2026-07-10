@@ -2,6 +2,7 @@ package me.bedtwL.oss;
 
 import lombok.Getter;
 import me.bedtwL.oss.listeners.commands.WorldCommand;
+import me.bedtwL.oss.listeners.commands.lobbyCommand;
 import me.bedtwL.oss.listeners.player.ChatFormatter;
 import me.bedtwL.oss.utils.LuckpermsUtils;
 import org.bukkit.Bukkit;
@@ -23,6 +24,7 @@ public final class CoreOSS extends JavaPlugin {
             LuckpermsUtils.init();
         regListener(new ChatFormatter());
         new WorldCommand().register(Bukkit.getPluginCommand("world"));
+        Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
     }
     public void regListener(Listener... listener)
     {

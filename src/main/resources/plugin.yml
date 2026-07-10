@@ -6,3 +6,8 @@ commands:
   world:
     aliases:
       - w
+  lobby:
+    aliases:
+      - hub
+      - l
+      - quit
