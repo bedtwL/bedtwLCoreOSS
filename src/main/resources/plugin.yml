@@ -2,6 +2,7 @@ name: bedtwLCoreOSS
 version: '${project.version}'
 main: me.bedtwL.oss.CoreOSS
 softdepend: ["LuckPerms"]
+folia-supported: true
 commands:
   world:
     aliases:

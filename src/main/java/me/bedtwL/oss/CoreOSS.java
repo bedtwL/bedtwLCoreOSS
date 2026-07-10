@@ -25,6 +25,7 @@ public final class CoreOSS extends JavaPlugin {
         regListener(new ChatFormatter());
         new WorldCommand().register(Bukkit.getPluginCommand("world"));
         Bukkit.getPluginCommand("lobby").setExecutor(new lobbyCommand());
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     }
     public void regListener(Listener... listener)
     {
