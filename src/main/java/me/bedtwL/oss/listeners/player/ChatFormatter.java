@@ -119,43 +119,46 @@ public class ChatFormatter implements Listener {
             if (emote) {
                 switch (word.toLowerCase()) {
                     case "<3":
-                        word = ChatColor.RED + "❤" + ChatColor.WHITE;
+                        word = "§c❤§f";
                         break;
                     case "gg":
-                        word = ChatColor.GOLD + word + ChatColor.WHITE;
+                        word = "§6"+word + "§f";
                         break;
                     case "o/":
-                        word = ChatColor.LIGHT_PURPLE + "( ﾟ◡ﾟ)/" + ChatColor.WHITE;
+                        word = "§d( ﾟ◡ﾟ)/§f";
                         break;
                     case ":yes:":
-                        word = ChatColor.GREEN + "✔" + ChatColor.WHITE;
+                        word = "§a✔§f";
                         break;
                     case ":no:":
-                        word = ChatColor.RED + "✖" + ChatColor.WHITE;
+                        word = "§c✖§f";
                         break;
                     case ":star:":
-                        word = ChatColor.YELLOW + "✮" + ChatColor.WHITE;
+                        word = "§e✮§f";
                         break;
                     case ":java:":
                         word = "☕";
                         break;
                     case ":arrow:":
-                        word = ChatColor.YELLOW + "➜" + ChatColor.WHITE;
+                        word = "§e➜§f";
                         break;
                     case ":shrug:":
-                        word = ChatColor.YELLOW + "¯\\_(ツ)_/¯" + ChatColor.WHITE;
+                        word = "§e¯\\_(ツ)_/¯§f";
                         break;
                     case ":tableflip:":
-                        word = ChatColor.RED + "(╯°□°）╯" + ChatColor.WHITE;
+                        word = "§c(╯°□°）╯§f";
                         break;
                     case ":gimme:":
-                        word = ChatColor.AQUA + "༼つ ◕_◕ ༽つ" + ChatColor.WHITE;
+                        word = "§b༼つ ◕_◕ ༽つ§f";
                         break;
                     case ":oof:":
-                        word = ChatColor.RED + "" + ChatColor.BOLD + "OOF" + ChatColor.WHITE;
+                        word = "§c§lOOF§f";
                         break;
                     case ":wei:":
-                        word = ChatColor.RED + "" + ChatColor.BOLD + "危" + ChatColor.WHITE;
+                        word = "§c§l危§f";
+                        break;
+                    case ":ciallo:":
+                        word="§bCiallo～§e(∠・ω< )⌒§6☆§f";
                         break;
                     case ":skull:":
                         word = "\uD83D\uDC80";

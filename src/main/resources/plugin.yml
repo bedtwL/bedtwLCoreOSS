@@ -12,3 +12,7 @@ commands:
       - hub
       - l
       - quit
+  inv:
+    usage: /inv <player>
+  summon:
+    usage: /summon

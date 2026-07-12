@@ -4,7 +4,13 @@
 Discord & Telegram: @bedtwl
 
 ### Currently avaliable features:
-Luckperms Chat formatting
+Luckperms Chat formatting & Emote `bedtwl.emote`
+
+Lobby Command 
+
+Inventory Command `bedtwl.cmd.inv`
+
+World Command `bedtwl.cmd.world`
 
 ### TODO:
 Nick & Vanish Features
