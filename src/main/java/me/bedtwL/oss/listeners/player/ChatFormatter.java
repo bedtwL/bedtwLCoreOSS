@@ -41,8 +41,10 @@ public class ChatFormatter implements Listener {
         }*/
         event.setMessage("§f"+message);
         String prefix=user.getCachedData().getMetaData().getPrefix();
-        if (prefix!=null)
+        if (prefix!="§e")
             event.setFormat(prefix + " " + player.getDisplayName() + surfix + "§f: " + message);
+        else
+            event.setFormat("§e" + player.getDisplayName() + surfix + "§f: " + message);
     }
 
     // Used in April fool before
