@@ -26,12 +26,11 @@ public class ChatFormatter implements Listener {
         LuckPerms api = LuckPermsProvider.get();
         User user = api.getPlayerAdapter(Player.class).getUser(player);
         String surfix = user.getCachedData().getMetaData().getSuffix();
-        ChatColor MessageColor = ChatColor.WHITE;
         if (surfix == null) surfix = "";
-        else surfix = " " + surfix;
+        else surfix = " " + surfix;/*
         if (user.getCachedData().getMetaData().getPrefix().equals("§7")) {
             MessageColor = ChatColor.GRAY;
-        }
+        }*/
         /* April fool
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd");
         LocalDate today = LocalDate.now();
@@ -40,10 +39,10 @@ public class ChatFormatter implements Listener {
             message= replaceRandomCharsWithSpace(message, message.length()/3);
             MessageColor=ChatColor.YELLOW;
         }*/
-        event.setMessage(MessageColor + message);
+        event.setMessage("§f"+message);
         String prefix=user.getCachedData().getMetaData().getPrefix();
         if (prefix!=null)
-            event.setFormat(prefix + " " + player.getDisplayName() + surfix + MessageColor + ": " + message);
+            event.setFormat(prefix + " " + player.getDisplayName() + surfix + "§f: " + message);
     }
 
     // Used in April fool before
