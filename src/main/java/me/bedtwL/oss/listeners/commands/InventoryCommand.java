@@ -15,12 +15,19 @@ public class InventoryCommand implements CommandExecutor {
             commandSender.sendMessage("§cYou dont have permission for this!");
             return true;
         }
-        if (args.length > 0) {
-            Player p = (Player) commandSender;
-            p.openInventory(Bukkit.getPlayer(args[0]).getInventory());
-        } else {
+        if (args.length == 0) {
             commandSender.sendMessage("§cUsage: /inv <player>");
+            return true;
         }
+
+        Player target = Bukkit.getPlayer(args[0]);
+        if (target == null) {
+            commandSender.sendMessage("§cThe player is not online!");
+            return true;
+        }
+
+        Player p = (Player) commandSender;
+        p.openInventory(target.getInventory());
         return true;
     }
 }

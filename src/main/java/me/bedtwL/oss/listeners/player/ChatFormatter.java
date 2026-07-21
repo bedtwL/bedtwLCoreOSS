@@ -11,6 +11,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 // From me.bedtwL.bedtwLServerCore.listener.ChatFormatterListener
@@ -22,7 +24,7 @@ public class ChatFormatter implements Listener {
         String message = event.getMessage();
 
         // Check if the message contains @(player)
-        message = ParseChat(message, player.hasPermission("bedtwl.emote"));
+        message = parseChat(message, player.hasPermission("bedtwl.emote"));
         LuckPerms api = LuckPermsProvider.get();
         User user = api.getPlayerAdapter(Player.class).getUser(player);
         String surfix = user.getCachedData().getMetaData().getSuffix();
@@ -40,8 +42,8 @@ public class ChatFormatter implements Listener {
             MessageColor=ChatColor.YELLOW;
         }*/
         event.setMessage("§f"+message);
-        String prefix=user.getCachedData().getMetaData().getPrefix();
-        if (prefix!="§e")
+        String prefix = user.getCachedData().getMetaData().getPrefix();
+        if (!prefix.equals("§e"))
             event.setFormat(prefix + " " + player.getDisplayName() + surfix + "§f: " + message);
         else
             event.setFormat("§e" + player.getDisplayName() + surfix + "§f: " + message);
@@ -63,7 +65,7 @@ public class ChatFormatter implements Listener {
     }
 
     // From me.bedtwL.bedtwLServerCore.utils.StringsUtils
-    public static String ParseChat(String message, boolean emote) {
+    public static String parseChat(String message, boolean emote) {
         String[] words = message.split(" ");
         String modifiedMessage = "";
 
@@ -84,37 +86,21 @@ public class ChatFormatter implements Listener {
             modifiedMessage = modifiedMessage + " " + word;
         }
 
-        return ParseEmote(modifiedMessage.substring(1).replace("%", "%%"), emote);
+        return parseEmote(modifiedMessage.substring(1).replace("%", "%%"), emote);
     }
 
-    public static String ParseEmote(String message, boolean emote) {
+    public static String parseEmote(String message, boolean emote) {
         String[] words = message.split(" ");
         String modifiedMessage = "";
 
+        List<String> wordsToFilter = Arrays.asList("fuck", "dick", "sexy", "nmsl", "shit", "fucking", "nigger", "bitch", "fk", "sex");
         for (String word : words) {
-            switch (word.toLowerCase()) {
-                case "fuck":
-                case "dick":
-                case "sexy":
-                case "nmsl":
-                case "shit":
-                    word = "****";
-                    break;
-                case "fucking":
-                    word = "*******";
-                    break;
-                case "nigger":
-                    word = "******";
-                    break;
-                case "bitch":
-                    word = "*****";
-                    break;
-                case "fk":
-                    word = "**";
-                    break;
-                case "sex":
-                    word = "***";
-                    break;
+            if(wordsToFilter.contains(word)) {
+                StringBuilder sb = new StringBuilder(word.length());
+                for (int i = 0; i < word.length(); i++) {
+                    sb.append("*");
+                }
+                word = sb.toString();
             }
             //Emote
             if (emote) {

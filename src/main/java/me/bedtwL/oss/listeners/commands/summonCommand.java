@@ -54,6 +54,7 @@ public class summonCommand implements bedtwLCommand {
                     count = Integer.parseInt(args[1]);
                 } catch (NumberFormatException e) {
                     player.sendMessage(ChatColor.RED + "Invalid count! Using default of 1.");
+                    return true;
                 }
             }
 
@@ -62,6 +63,7 @@ public class summonCommand implements bedtwLCommand {
                     radius = Double.parseDouble(args[2]);
                 } catch (NumberFormatException e) {
                     player.sendMessage(ChatColor.RED + "Invalid radius! Using default of 0.");
+                    return true;
                 }
             }
 

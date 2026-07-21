@@ -7,8 +7,7 @@ import me.bedtwL.oss.CoreOSS;
 import org.bukkit.entity.Player;
 
 public class BungeeUtils {
-    public static void sendPlayerToServer(Player p, String server)
-    {
+    public static void sendPlayerToServer(Player p, String server) {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("Connect");
         out.writeUTF(server);

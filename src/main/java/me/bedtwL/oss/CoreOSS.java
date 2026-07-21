@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class CoreOSS extends JavaPlugin {
     @Getter
     private static CoreOSS instance;
+
     @Override
     public void onEnable() {
         instance=this;
@@ -31,11 +32,12 @@ public final class CoreOSS extends JavaPlugin {
         Bukkit.getPluginCommand("summon").setExecutor(new summonCommand());
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     }
-    public void regListener(Listener... listener)
-    {
-        for (Listener l:listener)
+
+    public void regListener(Listener... listener) {
+        for (Listener l : listener)
             getServer().getPluginManager().registerEvents(l,this);
     }
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic
